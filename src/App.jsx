@@ -13,6 +13,7 @@ import {
   FreeBenefitsCard,
   SumAssuredCard,
 } from './components/Sections.jsx';
+import DownloadButton from './components/DownloadButton.jsx';
 
 const NAV = [
   ['sum-assured', 'Sum Assured'],
@@ -46,6 +47,7 @@ export default function App() {
           <span>Policy Dashboard</span>
         </div>
         <span className="demo-note">Sample data — for demonstration only</span>
+        <DownloadButton />
       </header>
 
       <main className="container">
