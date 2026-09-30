@@ -195,7 +195,13 @@ export function DisclosuresCard({ medical, nonMedical }) {
   );
 }
 
+import { generatePDF } from '../utils/generatePDF';
+
 export function PremiumCard({ premium }) {
+  const handleDownloadPDF = () => {
+    generatePDF('premium');
+  };
+
   return (
     <Card id="premium" title="Premium" icon="💳" className="span-2">
       <div className="premium-layout">
@@ -241,7 +247,7 @@ export function PremiumCard({ premium }) {
           </table>
         </div>
       </div>
-      <button>Download PDF</button>
+      <button onClick={handleDownloadPDF}>Download PDF</button>
     </Card>
   );
 }
