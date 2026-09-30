@@ -1,4 +1,5 @@
 import * as data from './data/policyData.js';
+import PDFGenerator from './components/PDFGenerator';
 import { formatCompactCurrency, formatCurrency, formatDate } from './utils/format.js';
 import {
   InsuredCard,
@@ -29,6 +30,8 @@ const NAV = [
 ];
 
 export default function App() {
+  return (
+    <div className="app" id="summary-page">
   const { policy, premium, sumAssured, addOns } = data;
 
   const kpis = [
@@ -49,6 +52,7 @@ export default function App() {
       </header>
 
       <main className="container">
+        <PDFGenerator elementId="summary-page" />
         <section className="policy-hero">
           <div>
             <p className="eyebrow">{policy.policyNumber}</p>
