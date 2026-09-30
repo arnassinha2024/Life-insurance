@@ -241,6 +241,7 @@ export function PremiumCard({ premium }) {
           </table>
         </div>
       </div>
+      <button>Download PDF</button>
     </Card>
   );
 }
