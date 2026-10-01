@@ -30,8 +30,6 @@ const NAV = [
 ];
 
 export default function App() {
-  return (
-    <div className="app" id="summary-page">
   const { policy, premium, sumAssured, addOns } = data;
 
   const kpis = [
@@ -42,7 +40,7 @@ export default function App() {
   ];
 
   return (
-    <div className="app">
+    <div className="app" id="summary-page">
       <header className="topbar">
         <div className="brand">
           <span className="logo" aria-hidden="true">🛡️</span>
