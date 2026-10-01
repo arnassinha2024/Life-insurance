@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import * as data from './data/policyData.js';
 import PDFGenerator from './components/PDFGenerator';
 import { formatCompactCurrency, formatCurrency, formatDate } from './utils/format.js';
@@ -14,6 +15,7 @@ import {
   FreeBenefitsCard,
   SumAssuredCard,
 } from './components/Sections.jsx';
+import PartiesDetails from './pages/PartiesDetails.jsx';
 
 const NAV = [
   ['sum-assured', 'Sum Assured'],
@@ -30,8 +32,13 @@ const NAV = [
 ];
 
 export default function App() {
-  return (
-    <div className="app" id="summary-page">
+  const [currentPage, setCurrentPage] = useState('summary');
+
+  // If on parties details page, render that instead
+  if (currentPage === 'parties-details') {
+    return <PartiesDetails onNavigateHome={() => setCurrentPage('summary')} />;
+  }
+
   const { policy, premium, sumAssured, addOns } = data;
 
   const kpis = [
@@ -42,7 +49,7 @@ export default function App() {
   ];
 
   return (
-    <div className="app">
+    <div className="app" id="summary-page">
       <header className="topbar">
         <div className="brand">
           <span className="logo" aria-hidden="true">🛡️</span>
@@ -97,6 +104,12 @@ export default function App() {
           <PremiumCard premium={premium} />
           <AddOnsCard addOns={addOns} />
           <FreeBenefitsCard benefits={data.freeBenefits} />
+        </div>
+
+        <div className="actions">
+          <button className="btn btn-primary" onClick={() => setCurrentPage('parties-details')}>
+            View Parties Details →
+          </button>
         </div>
       </main>
     </div>
