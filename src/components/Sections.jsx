@@ -6,7 +6,7 @@ import { formatCurrency, formatDate } from '../utils/format.js';
 const PhoneLink = ({ number }) => <a href={`tel:${number.replace(/\s/g, '')}`}>{number}</a>;
 const EmailLink = ({ email }) => <a href={`mailto:${email}`}>{email}</a>;
 
-export function InsuredCard({ insured }) {
+export function InsuredCard({ insured, onViewDetails }) {
   return (
     <Card id="insured" title="Insured Details" icon="👤">
       <InfoGrid
@@ -22,6 +22,13 @@ export function InsuredCard({ insured }) {
           { label: 'Relation to Proposer', value: insured.relationshipToProposer },
         ]}
       />
+      {onViewDetails && (
+        <div className="card-actions">
+          <button className="btn btn-primary" onClick={onViewDetails}>
+            View All Parties Details →
+          </button>
+        </div>
+      )}
     </Card>
   );
 }

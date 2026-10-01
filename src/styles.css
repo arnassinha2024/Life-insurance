@@ -236,6 +236,29 @@ tfoot td { font-weight: 700; border-bottom: none; }
   font-size: 16px;
 }
 
+/* Buttons */
+.btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn:hover { filter: brightness(0.9); }
+.btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { filter: brightness(0.9); }
+
+/* Actions */
+.actions { display: flex; gap: 12px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
+
+/* Card Actions */
+.card-actions { display: flex; gap: 12px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+
 /* Lists */
 .list { list-style: none; margin: 0; padding: 0; }
 .list li { padding: 12px 0; border-bottom: 1px solid var(--border); }

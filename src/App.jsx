@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import * as data from './data/policyData.js';
 import PDFGenerator from './components/PDFGenerator';
 import { formatCompactCurrency, formatCurrency, formatDate } from './utils/format.js';
@@ -14,6 +15,7 @@ import {
   FreeBenefitsCard,
   SumAssuredCard,
 } from './components/Sections.jsx';
+import PartiesDetails from './pages/PartiesDetails.jsx';
 
 const NAV = [
   ['sum-assured', 'Sum Assured'],
@@ -30,6 +32,12 @@ const NAV = [
 ];
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState('summary');
+
+  // If on parties details page, render that instead
+  if (currentPage === 'parties-details') {
+    return <PartiesDetails onNavigateHome={() => setCurrentPage('summary')} />;
+  }
   const { policy, premium, sumAssured, addOns } = data;
 
   const kpis = [
@@ -85,7 +93,7 @@ export default function App() {
 
         <div className="grid">
           <SumAssuredCard sumAssured={sumAssured} />
-          <InsuredCard insured={data.insured} />
+          <InsuredCard insured={data.insured} onViewDetails={() => setCurrentPage('parties-details')} />
           <PolicyHolderCard holder={data.policyHolder} />
           <BeneficiariesCard beneficiaries={data.beneficiaries} />
           <ContactCard contact={data.contactInfo} />
@@ -95,6 +103,12 @@ export default function App() {
           <PremiumCard premium={premium} />
           <AddOnsCard addOns={addOns} />
           <FreeBenefitsCard benefits={data.freeBenefits} />
+        </div>
+
+        <div className="actions">
+          <button className="btn btn-primary" onClick={() => setCurrentPage('parties-details')}>
+            View Parties Details →
+          </button>
         </div>
       </main>
     </div>
