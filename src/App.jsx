@@ -94,7 +94,7 @@ export default function App() {
 
         <div className="grid">
           <SumAssuredCard sumAssured={sumAssured} />
-          <InsuredCard insured={data.insured} />
+          <InsuredCard insured={data.insured} onViewDetails={() => setCurrentPage('parties-details')} />
           <PolicyHolderCard holder={data.policyHolder} />
           <BeneficiariesCard beneficiaries={data.beneficiaries} />
           <ContactCard contact={data.contactInfo} />
